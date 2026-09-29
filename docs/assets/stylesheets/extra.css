@@ -37,10 +37,10 @@
   --md-code-font-family: "JetBrains Mono", "SFMono-Regular", Consolas, Menlo, monospace;
 
   /* Accent colors — used for headings/tabs/buttons */
-  --ds-blue-light: #ABD2FA;
-  --ds-blue: #7692FF;
+  --ds-blue-light: #D6E8FF;
+  --ds-blue: #ABD2FA;
   --md-accent-fg-color: var(--ds-blue);
-  --md-accent-fg-color--transparent: #7692FF26;
+  --md-accent-fg-color--transparent: #ABD2FA26;
 }
 
 body {
@@ -112,6 +112,25 @@ body {
   background-color: var(--ds-blue-light) !important;
 }
 
+/* Top page-navigation tabs (below the header, one per page) */
+.md-tabs {
+  background-color: #000000;
+  border-bottom: 1px solid #222222;
+}
+
+.md-tabs__link {
+  color: var(--ds-blue-light);
+}
+
+.md-tabs__link:hover,
+.md-tabs__item--active .md-tabs__link {
+  color: var(--ds-blue);
+}
+
+.md-tabs__item--active {
+  border-bottom-color: var(--ds-blue);
+}
+
 /* Buttons */
 .md-typeset .md-button {
   color: var(--ds-blue-light);
@@ -180,7 +199,7 @@ body {
 
 .ds-header__logo-slot img {
   max-width: 96px;
-  max-height: px;
+  max-height: 64px;
   width: auto;
   height: auto;
   display: block;
