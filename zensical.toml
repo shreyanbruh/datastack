@@ -6,6 +6,7 @@ nav = [
   { "GitHub Tutorial" = "index.md" },
   { "Jupyter Notebook Conversion" = "jupyter-notebook-conversion.md" },
   { "Install Blender" = "blender-install.md" },
+  { "Get in Touch" = "get-in-touch.md" },
 ]
 
 extra_css = ["assets/stylesheets/extra.css"]
