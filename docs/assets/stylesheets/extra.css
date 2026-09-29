@@ -177,6 +177,14 @@ body {
   padding-top: 230px; /* header height + some breathing room */
 }
 
+.md-tabs {
+  position: fixed;
+  top: 225px; /* however tall your .ds-header ends up being */
+  left: 0;
+  z-index: 9;
+}
+
+
 /* Dark overlay so text stays readable over a background image */
 .ds-header::before {
   content: "";
