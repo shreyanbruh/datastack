@@ -17,6 +17,7 @@ features = [
   "content.code.annotate",
   "content.tabs.link",
   "navigation.top",
+  "navigation.tabs"
 ]
 
 [project.theme.font]
