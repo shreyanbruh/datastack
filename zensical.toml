@@ -5,6 +5,7 @@ site_description = "GitHub guides and resources for the team"
 nav = [
   { "GitHub Tutorial" = "index.md" },
   { "Jupyter Notebook Conversion" = "jupyter-notebook-conversion.md" },
+  { "Install Blender" = "blender-install.md" },
 ]
 
 extra_css = ["assets/stylesheets/extra.css"]
