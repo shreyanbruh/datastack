@@ -10,6 +10,7 @@ nav = [
 ]
 
 extra_css = ["assets/stylesheets/extra.css"]
+extra_javascript = ["assets/javascripts/header-offset.js"]
 
 [project.theme]
 custom_dir = "overrides"

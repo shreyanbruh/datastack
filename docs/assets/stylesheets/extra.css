@@ -165,6 +165,8 @@ body {
 .ds-header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   width: 100%;
   background-color: #000000;
@@ -173,17 +175,26 @@ body {
   border-bottom: 1px solid #ffffff;
 }
 
+/* The header's real height is measured by assets/javascripts/header-offset.js
+   at load/resize and written into --ds-header-h, so this works at any
+   window size without hardcoded pixel guesses. --ds-tabs-h defaults to 0
+   until the same script measures the tab bar too. */
+:root {
+  --ds-header-h: 230px;
+  --ds-tabs-h: 0px;
+}
+
 body {
-  padding-top: 230px; /* header height + some breathing room */
+  padding-top: calc(var(--ds-header-h) + var(--ds-tabs-h));
 }
 
 .md-tabs {
   position: fixed;
-  top: 225px; /* however tall your .ds-header ends up being */
+  top: var(--ds-header-h);
   left: 0;
+  right: 0;
   z-index: 9;
 }
-
 
 /* Dark overlay so text stays readable over a background image */
 .ds-header::before {
@@ -211,7 +222,7 @@ body {
 
 .ds-header__logo-slot img {
   max-width: 96px;
-  max-height: 96px;
+  max-height: 64px;
   width: auto;
   height: auto;
   display: block;
@@ -275,7 +286,7 @@ body {
     width: 56px;
   }
   .ds-header__logo-slot img {
-    max-width: 96px;
-    max-height: 96px;
+    max-width: 76px;
+    max-height: 76px;
   }
 }
