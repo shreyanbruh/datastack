@@ -173,6 +173,10 @@ body {
   border-bottom: 1px solid #ffffff;
 }
 
+body {
+  padding-top: 230px; /* header height + some breathing room */
+}
+
 /* Dark overlay so text stays readable over a background image */
 .ds-header::before {
   content: "";
