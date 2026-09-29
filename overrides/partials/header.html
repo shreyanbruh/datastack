@@ -1,0 +1,47 @@
+{#
+  Custom DataStack header.
+  - Two logo slots (left / right), set via [project.extra] logo_left / logo_right
+    in zensical.toml. If a file isn't present yet, a dashed placeholder box
+    is shown instead so you can see where it will go.
+  - Optional full-width background image, set via [project.extra] header_background.
+    Recommended size: 1920 x 480px (a wide banner, JPG or PNG), it will be
+    cropped/covered to fit any screen width.
+  - Centered ASCII-art site logo/title.
+#}
+<header class="ds-header"
+  {% if config.extra.header_background %}
+  style="background-image: url('{{ config.extra.header_background | url }}');"
+  {% endif %}>
+
+  <nav class="md-header__inner ds-header__inner" aria-label="{{ lang.t('header') }}">
+
+    <div class="ds-header__logo-slot ds-header__logo-slot--left">
+      {% if config.extra.logo_left %}
+        <a href="{{ nav.homepage.url | url }}">
+          <img src="{{ config.extra.logo_left | url }}" alt="Logo">
+        </a>
+      {% else %}
+        <div class="ds-header__logo-placeholder">LOGO</div>
+      {% endif %}
+    </div>
+
+    <div class="ds-header__center">
+      <pre class="ds-ascii-logo" aria-label="{{ config.site_name }}">{% filter escape %}
+▄▄▄▄▄▄▄▄▄▄▄▄                    ▄                                   ▄▄▄▄▄▄▄▄▄▄▄▌ ▄                                               ▄              
+░████▓  ▐█▓▓▓▄                  ▓█▄                              ▄████  ▐█▓▓▓▓█▌ ▓█▄                                             ▓█▄            
+▒████▓   ▓█▓▓█▌                 ▓▓▓▓▄                           ▐▓███▓  ▐▓▒▒▒▒▓▌ ▓▓▓▓▄                                           ▓▓▓▓▄      ▄▓▓█
+▓████▓   ▓████░   ▄▄▄▄▄▄ ▄▄▄▄▄▄ ▓▓▓▓▓█            ▄▄▄▄▄▄ ▄▄▄▄▄▄ ▓█▒▒▓▓  ▐▒░░░░▒▌ ▓▓▓▓▓█            ▄▄▄▄▄▄ ▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄ ▓▓▓▓▓█    █▒▒▓█
+██▓██▓   ▓████▒ ▄█████▌ ▀█▓▓▓▓█ ▓▒▒▒▒▓          ▄█████▌ ▀█▓▓▓▓█ ▓█░░█▓  ▐░▓▓▓▓░▌ ▓▒▒▒▒▓          ▄█████▌ ▀█▓▓▓▓█ ▄█████▌  █▓▓▓▓█ ▓▒▒▒▒▓   ▐▓▓▒▒█
+█▓▓▓█▓   ▓████▓ █▓███▓   ▓█▓▓█▓ ▓░░░░▓          █▓███▓   ▓█▓▓█▓ ▓█▓▓▓▓▌  ▀▀▀▀▀▀  ▓░░░░▓          █▓███▓   ▓█▓▓█▓ █▓███▓   ▓█▓▓█▀ ▓░░░░▓  ▄██▓▓█▀
+█▓▓▓█▓   ▓█████ █████▓   ▓████▓ ■▀░▒▒█ ▄▄▄▄▄▄   █████▓   ▓████▓ ▐█▓▓▒▒█▄▄        ■▀░▒▒█ ▄▄▄▄▄▄   █████▓   ▓████▓ █████▓   ▀▀     ■▀░▒▒█ █████▀  
+██▓███   ▓█▓███ ▓████▓   ▓████▓ ▄██▄▄█▀  ▓████▄ ▓████▓   ▓████▓  ▀█▓▓▓▓▓▓▓▒▄     ▄██▄▄█▀  ▓████▄ ▓████▓   ▓████▓ ▓████▓          ▄██▄▄██▀█▓██▄  
+▓████▓   ▓█▓▓██ ▓▓▓▓▓▓   ▓▓▓▓▓▓ ▓█▓▓█▓   ▓█▓▓█▓ ▓▓▓▓▓▓   ▓▓▓▓▓▓     ▀▀▀▓▓▒▒▒▓▄   ▓█▓▓█▓   ▓█▓▓█▓ ▓▓▓▓▓▓   ▓▓▓▓▓▓ ▓▓▓▓▓▓   ▄▄▄▄▄▄ ▓█▓▓██▌  ██▓▓█ 
+▓████▓   ▓█████ ▓▒▒▒▒▓   ▓▒▒▒▒▓ ▓████▓    ▀▀▀▀  ▓▒▒▒▒▓   ▓▒▒▒▒▓         ▀▒▒▓▓█▌  ▓████▓    ▀▀▀▀  ▓▒▒▒▒▓   ▓▒▒▒▒▓ ▓▒▒▒▒▓   ▓▒▒▒▒▓ ▓████▓   ▓████▌
+▓████▓   ▓████▓ ▓░░░░▒▌  ▓░░░░▓ ▓████▓   ▄      ▓░░░░▒▌  ▓░░░░▓ ▄▄▄▄▄▄▄  ▓▓▓██▓  ▓████▓   ▄      ▓░░░░▒▌  ▓░░░░▓ ▓░░░░▒▌  ▓░░░░▓ ▓████▓   ▓████▓
+▓▓▓▓▓▓   ▓▓▓▓▓▒  ▀▄▄▄▄█▄▀█▄▄▄▄▓ ▓▓▓▓▓▓   ▓▓▓▓▄▄  ▀▄▄▄▄█▄▀█▄▄▄▄▓ █▓▓▓▓▓█  ▓█████  ▓▓▓▓▓▓   ▓▓▓▓▄▄  ▀▄▄▄▄█▄▀█▄▄▄▄▓  ▀▄▄▄▄█▄▄█▄▄▄▄▓ ▓▓▓▓▓▓   ▓▓▓▓▓▓
+{% endfilter %}</pre>
+      <div class="ds-header__tagline"> </div>
+    </div>
+
+  </nav>
+</header>

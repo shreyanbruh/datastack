@@ -1,0 +1,250 @@
+/* =========================================================================
+   DataStack — pure black & white, Helvetica, terminal-inspired theme
+   ========================================================================= */
+
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  /* Core palette: pure black background, pure white text */
+  --md-default-bg-color: #000000;
+  --md-default-bg-color--light: #0a0a0a;
+  --md-default-bg-color--lighter: #111111;
+  --md-default-bg-color--lightest: #1a1a1a;
+
+  --md-default-fg-color: #ffffff;
+  --md-default-fg-color--light: #cccccc;
+  --md-default-fg-color--lighter: #888888;
+  --md-default-fg-color--lightest: #333333;
+
+  --md-typeset-color: #ffffff;
+  --md-typeset-a-color: #ffffff;
+  --md-accent-fg-color: #ffffff;
+  --md-accent-fg-color--transparent: #ffffff22;
+
+  --md-primary-fg-color: #000000;
+  --md-primary-bg-color: #ffffff;
+
+  --md-code-bg-color: #0d0d0d;
+  --md-code-fg-color: #eaeaea;
+  --md-code-hl-color: #ffffff33;
+
+  --md-footer-bg-color: #000000;
+  --md-footer-fg-color: #ffffff;
+  --md-footer-fg-color--light: #aaaaaa;
+
+  /* Helvetica everywhere, with sane fallbacks */
+  --md-text-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --md-code-font-family: "JetBrains Mono", "SFMono-Regular", Consolas, Menlo, monospace;
+
+  /* Accent colors — used for headings/tabs/buttons */
+  --ds-blue-light: #ABD2FA;
+  --ds-blue: #7692FF;
+  --md-accent-fg-color: var(--ds-blue);
+  --md-accent-fg-color--transparent: #7692FF26;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Underline links instead of relying on color, since everything is white */
+.md-typeset a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Flatten shadows/borders that assume a light theme */
+.md-typeset .admonition,
+.md-typeset details {
+  background-color: #0a0a0a !important;
+  border: 1px solid #333333;
+  box-shadow: none;
+}
+
+.md-typeset code {
+  background-color: #0d0d0d;
+  border: 1px solid #222222;
+}
+
+.md-typeset pre > code {
+  background-color: #0d0d0d;
+  border: 1px solid #222222;
+}
+
+.md-footer-meta {
+  background-color: #000000 !important;
+  border-top: 1px solid #222222;
+}
+
+/* =========================================================================
+   Accent color — headings, tabs, buttons
+   ========================================================================= */
+
+/* Headings: light blue for top-level, deeper blue for sub-headings */
+.md-typeset h1,
+.md-typeset h2 {
+  color: var(--ds-blue-light);
+}
+
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  color: var(--ds-blue);
+}
+
+/* Content tabs (the === "Mac" / "Windows" style tabs) */
+.md-typeset .tabbed-labels {
+  box-shadow: 0 -1px var(--md-default-fg-color--lightest) inset;
+}
+
+.md-typeset .tabbed-labels > label {
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .tabbed-labels > label:hover {
+  color: var(--ds-blue-light);
+}
+
+.js .md-typeset .tabbed-labels:before {
+  background-color: var(--ds-blue-light) !important;
+}
+
+/* Buttons */
+.md-typeset .md-button {
+  color: var(--ds-blue-light);
+  border: 1px solid var(--ds-blue-light);
+  background-color: transparent;
+}
+
+.md-typeset .md-button:focus,
+.md-typeset .md-button:hover {
+  color: #000000;
+  background-color: var(--ds-blue-light);
+}
+
+.md-typeset .md-button--primary {
+  color: #000000;
+  background-color: var(--ds-blue-light);
+  border-color: var(--ds-blue-light);
+}
+
+.md-typeset .md-button--primary:focus,
+.md-typeset .md-button--primary:hover {
+  opacity: 0.85;
+}
+
+/* Code-block copy button + admonition icons pick up the blue accent too
+   via --md-accent-fg-color, set above */
+
+/* =========================================================================
+   Header — terminal / ASCII look, centered logo, laptop-first layout
+   ========================================================================= */
+
+.ds-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* Dark overlay so text stays readable over a background image */
+.ds-header::before {
+  content: "";
+}
+
+.ds-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.ds-header__logo-slot {
+  flex: 0 0 auto;
+  width: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-header__logo-slot img {
+  max-width: 96px;
+  max-height: px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.ds-header__logo-placeholder {
+  width: 96px;
+  height: 64px;
+  border: 1px dashed #555555;
+  color: #555555;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.ds-header__center {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.ds-ascii-logo {
+  margin: 0;
+  color: #ffffff;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 0.4rem;
+  line-height: 1.1;
+  white-space: pre;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+.ds-header__tagline {
+  margin-top: 0.4rem;
+  color: #888888;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+}
+
+@media (min-width: 60em) {
+  .ds-ascii-logo {
+    font-size: 0.5rem;
+  }
+}
+
+/* This site targets laptop/desktop widths; on very narrow phone widths the
+   ASCII logo scrolls horizontally rather than wrapping and breaking. */
+@media (max-width: 44em) {
+  .ds-header__inner {
+    padding: 1rem;
+  }
+  .ds-header__logo-slot,
+  .ds-header__logo-placeholder {
+    width: 56px;
+  }
+  .ds-header__logo-slot img {
+    max-width: 76px;
+    max-height: 76px;
+  }
+}
