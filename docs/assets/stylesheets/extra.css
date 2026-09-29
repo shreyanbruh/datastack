@@ -116,6 +116,7 @@ body {
 .md-tabs {
   background-color: #000000;
   border-bottom: 1px solid #222222;
+  display: block !important;
 }
 
 .md-tabs__link {
